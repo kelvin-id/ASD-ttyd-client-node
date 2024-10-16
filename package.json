@@ -1,0 +1,29 @@
+{
+  "name": "asd-ttyd-client",
+  "version": "0.0.1",
+  "description": "A Node.js client library for connecting to TTYD servers via WebSocket, enabling command execution and terminal output handling with support for authentication.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \\\"No tests specified\\\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kelvin-id/ASD-ttyd-client-npm.git"
+  },
+  "keywords": [
+    "ASD",
+    "TTYD",
+    "websocket",
+    "terminal",
+    "nodejs"
+  ],
+  "author": "Kelvin R. Wuite <asd@kelvin.id>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kelvin-id/ASD-ttyd-client-npm/issues"
+  },
+  "homepage": "https://github.com/kelvin-id/ASD-ttyd-client-npm#readme",
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}
