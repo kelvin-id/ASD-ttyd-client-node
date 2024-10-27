@@ -1,6 +1,6 @@
 {
   "name": "asd-ttyd-client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Node.js client library for connecting to TTYD servers via WebSocket, enabling command execution and terminal output handling with support for authentication.",
   "main": "lib/index.js",
   "scripts": {

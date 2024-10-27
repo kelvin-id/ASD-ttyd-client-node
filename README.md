@@ -12,23 +12,48 @@ npm install asd-ttyd-client
 
 ### Usage
 
-```javascript
-const TTYDClient = require('asd-ttyd-client');
+To use the `asd-ttyd-client` library, you need to configure it with several options. Here's a breakdown of what each option does:
 
-const client = new TTYDClient({
-  wsUrl: 'wss://your-ttyd-server/ws?arg=your-command',
-  username: 'your-username',
-  password: 'your-password',
+- **server**: The address of the TTYD server you want to connect to. This should be a URL, such as `unique-url.eu.asd.engineer`.
+
+- **path**: The path for the HTTPS and WebSocket request. Typically, this is set to `'/'`.
+
+- **username** and **password**: These are used for Basic Authentication. Provide the credentials required to access the TTYD server.
+
+- **command**: The command you wish to execute on the server via WebSocket. This is passed as a URL argument.
+
+- **rejectUnauthorized**: A boolean value that determines whether to reject self-signed certificates. Set this to `false` if you're using self-signed certificates and want to bypass the security check.
+
+- **executionTimeout**: An optional parameter that specifies the timeout in milliseconds before the WebSocket connection is closed. This can be useful to prevent hanging connections.
+
+- **onOutput**: A callback function that handles output messages from the server. This function receives the output as its argument.
+
+- **onError**: A callback function for handling errors. It receives the error object as its argument.
+
+- **onClose**: A callback function that is called when the WebSocket connection is closed. It receives the closure code and reason as arguments.
+
+Here's an example of how to set up the client:
+
+```javascript
+const exexViaTTYD = require('asd-ttyd-client');
+
+exexViaTTYD({
+  server: '<unique-url.eu.asd.engineer>',
+  path: '/',
+  username: '<Basic_Auth>',
+  password: '<Basic_Auth>',
+  command: '<TTYD url-arg>',
+  rejectUnauthorized: false,
+  executionTimeout: 1200, // Optional: Defaults to wait 400ms for each websocket message before closing
   onOutput: (output) => {
-    console.log(`[OUTPUT]> ${output}`);
-    // Your custom logic to parse the output
+    console.log('[OUTPUT]>', output);
   },
-  onError: (err) => {
-    console.error(`[ERROR]> ${err}`);
+  onError: (error) => {
+    console.error('[ERROR]>', error);
   },
   onClose: (code, reason) => {
-    console.log(`[INFO]> Connection closed: ${code}, Reason: ${reason}`);
-  },
+    console.log('[CLOSED]>', code, reason);
+  }
 });
 ```
 
